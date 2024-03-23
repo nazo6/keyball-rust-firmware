@@ -1,0 +1,19 @@
+[build]
+target = "avr-specs/avr-atmega32u4.json"
+
+[target.'cfg(target_arch = "avr")']
+runner = "ravedude promicro -P COM13"
+
+[unstable]
+build-std = ["core"]
+
+[profile.dev]
+panic = "abort"
+lto = true
+opt-level = "s"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
